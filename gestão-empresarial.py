@@ -38,23 +38,47 @@ funcionarios = {
     "Ana": {
         "cpf": "123.456.789-00",
         "cargo": "vendedora",
-        "salario": 2500
+        "salario": 2500,
+        "senha":"123abx"
     },
     "Carlos": {
         "cpf": "987.654.321-00",
         "cargo": "estoquista",
-        "salario": 2200
+        "salario": 2200,
+        "senha":"4050"
     },
     "Gustavo": {
         "cpf":"083.842.149-05",
         "cargo": "dev junior",
-        "salario":4000
+        "salario":4000,
+        "senha": "3540"
     }
 }
-nome = "Gustavo"
+
+nome = input("Nome: ")
+if nome not in funcionarios:
+    print("Funcionário não encontrado!")
+    exit()
+
+tentativas = 3
+while tentativas > 0:
+    senha = input("Senha: ")
+    if senha == funcionarios[nome]["senha"]:
+        break 
+    tentativas -= 1
+    print(f"Senha errada! Restam {tentativas} tentativas.")
+else:
+   
+    print("Acesso bloqueado!")
+    exit()
+
+cargo = funcionarios[nome]["cargo"]
+print(f"Bem-vindo ao sistema, {nome}! ({cargo})")
 
 
-print("bem vindo ao sistema da empresa",nome)
+
+
+print("bem vindo ao sistema da empresa")
 
 print("1-verificar estoque de produtos")
 print("2-cadastrar produtos")
